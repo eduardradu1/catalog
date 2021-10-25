@@ -7,7 +7,7 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>{{ userName }}</h4>
+                      <h4>{{ currentUser?.nume }} {{currentUser?.prenume}}</h4>
                       <!-- <p class="text-secondary mb-1">Full Stack Developer</p>
                       <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                       <button class="btn btn-primary">Follow</button>
@@ -25,7 +25,7 @@
                       <h6 class="mb-0">Prenume</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {{userName}}
+                      {{ currentUser?.nume}}
                     </div>
                   </div>
                   <hr>
@@ -34,7 +34,7 @@
                       <h6 class="mb-0">Nume</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {{userName}}
+                      {{currentUser?.prenume}}
                     </div>
                   </div>
                   <hr>
@@ -47,7 +47,7 @@
                     </div>
                   </div>
                   <hr>
-                  <div class="row">
+                  <div class="row" *ngIf="currentUser?.isStudent == true">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Anul</h6>
                     </div>
@@ -55,17 +55,19 @@
                       II
                     </div>
                   </div>
-                <!--<div class="row">
-                    <div class="col-sm-12">
-                        <a class="btn btn-info " target="__blank"
-                            href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                  <div class="row" *ngIf="currentUser?.isStudent == false">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Materie</h6>
                     </div>
-                </div>-->
+                    <div class="col-sm-9 text-secondary">
+                      {{this.currentUser?.materie}}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <table class="table" style="background-color: white;text-align: center;">
+          <table class="table" style="background-color: white;text-align: center;" *ngIf="currentUser?.isStudent == true">
             <thead>
               <tr>
                 <th scope="col">Disciplina</th>
@@ -85,5 +87,27 @@
               </tr>
             </tbody>
           </table>
+            <table class="table"  *ngIf="currentUser?.isStudent == false" style="background-color: white;text-align: center;" >
+              <thead>
+                <tr>
+                    <th>Student</th>
+                  <th>Nota 1</th>
+                  <th>Nota 2</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of studentList; let i = index;">
+                  <td>{{student.nume}} {{student.prenume}}</td>
+                  <td></td>
+                  <td ></td>
+                  <td>
+                      <button type="button" (click)="OpenModal(student.uid)" class="btn btn-success">  
+                          Noteaza
+                  </button>
+                </td>
+               
+              </tbody>
+            </table>
         </div>
     </div>

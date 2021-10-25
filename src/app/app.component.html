@@ -1,14 +1,38 @@
-<nav>
+<!--<nav>
   <div class="nav-bar-wrapper">
     <a href="index.php"><img src="../../../assets/images/Logo_Dedeman.png" alt="Dedeman logo"></a>
     <ul>
-          <li><a  href="index.php">Acasa</a></li>
-          <li><a href='profile.php'>Date Student</a></li>
-          <li><a href='profile.php'>Note</a></li>
-          <li><a *ngIf="hideLogOut" href='logout.php'>Logout</a></li>
-          <li><a *ngIf="hideLogOut != true" [routerLink]="['/register']" href='signup.php'>Inregistrare</a></li>
-          <li><a *ngIf="hideLogOut != true" [routerLink]="['/log-in']" href='login.php'>Log in</a></li>
+          <li><a [routerLink]="['/home']" >Acasa</a></li>
+          <li><a *ngIf="hideLogOut"  [routerLink]="['/studenti']">Studenti</a></li>
+          <li><a *ngIf="hideLogOut"   [routerLink]="['/profil']">Profil</a></li>
+          <li><a *ngIf="hideLogOut" href=# (click)="logOut()">Logout</a></li>
+          <li><a *ngIf="hideLogOut != true" [routerLink]="['/register']" href=#>Inregistrare</a></li>
+          <li><a *ngIf="hideLogOut != true" [routerLink]="['/log-in']" href=#>Log in</a></li>
     </ul>
+  </div>
+</nav>-->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container-fluid">
+      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+          <ul class="navbar-nav me-auto">
+            <li><a [routerLink]="['/home']" >Acasa</a></li>
+            <li><a *ngIf="hideLogOut && isStudent"   [routerLink]="['/profil']">Date Student</a></li>
+            <li><a *ngIf="hideLogOut && !isStudent"   [routerLink]="['/studenti']">Studenti</a></li>
+          </ul>
+      </div>
+      <div class="mx-auto order-0">
+          <a class="navbar-brand mx-auto" href="#"><img src="../../../assets/images/Logo_Dedeman.png"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".dual-collapse2">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+          <ul class="navbar-nav ms-auto">
+            <li><a *ngIf="hideLogOut != true" [routerLink]="['/register']" href=#>Inregistrare</a></li>
+            <li><a *ngIf="hideLogOut != true" [routerLink]="['/log-in']" href=#>Log in</a></li>
+            <li><a *ngIf="hideLogOut" href=# (click)="logOut()">Logout</a></li>
+          </ul>
+      </div>
   </div>
 </nav>
 <div class="wrapper">

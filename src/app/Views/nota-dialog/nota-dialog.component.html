@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="login d-flex align-items-center py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 col-lg-8 mx-auto">
+            <!-- Sign In Form -->
+            <form [formGroup]="gradesForm" (ngSubmit)="Save(gradesForm.value)">
+              <div class="form-floating mb-3">
+                <input type="number" formControlName="nota1" class="form-control" id="floatingInput" placeholder="nota 1"  >
+                <label for="floatingInput">Nota 1</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="number"  formControlName="nota2" class="form-control" id="floatingPassword" placeholder="nota 2">
+                <label for="floatingPassword">Nota 2</label>
+              </div>
+              <div class="d-grid">
+                <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Adauga note</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
