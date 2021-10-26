@@ -6,13 +6,23 @@
                 <h3 class="login-heading mb-4">Inregistreaza-te!</h3>
                 <form [formGroup]="registerForm" (ngSubmit)="Register(registerForm.value)">
                     <div class="form-floating mb-3">
-                        <input type="nume" class="form-control" id="floatingInput" placeholder="nume" formControlName="nume">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="nume" formControlName="nume">
                         <label for="floatingInput">Nume</label>
                       </div>
                       <div class="form-floating mb-3">
-                        <input type="prenume" class="form-control" id="floatingInput" placeholder="prenume" formControlName="prenume">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="prenume" formControlName="prenume">
                         <label for="floatingInput">Prenume</label>
                       </div>
+                    <div class="mb-3">
+                      <select class="form-select" aria-label="Default select example" id="userType" (change)="changeUserType($event)"  formControlName="userType">
+                        <option selected value="1">Student</option>
+                        <option value="2">Profesor</option>
+                      </select>
+                    </div>
+                    <div class="form-floating mb-3" *ngIf="isProfesorSelected">
+                      <input type="text" class="form-control" id="floatingInput" placeholder="materie" formControlName="materie">
+                      <label for="floatingInput">Materie</label>
+                    </div>
                   <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email">
                     <label for="floatingInput">Adresa E-mail</label>

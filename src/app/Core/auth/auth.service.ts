@@ -96,14 +96,19 @@ export class AuthService {
       }
 
       mapUser(result:any, data:any){
+        
         var user : User = {
             uid : result.user?.uid,
             email : result.user?.email,
             nume :  data.nume,
             prenume : data.prenume,
             photoURL : "https://bootdey.com/img/Content/avatar/avatar7.png",
-            emailVerified : result.user?.emailVerified
+            emailVerified : result.user?.emailVerified,
+            isStudent: data.userType == 1 ? true : false
         };
+        if(data.materie){
+          user.materie = data.materie;
+        }
         return user;
       }
 }

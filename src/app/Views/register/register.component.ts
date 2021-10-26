@@ -8,12 +8,14 @@ import { AuthService } from 'src/app/Core/auth/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  isProfesorSelected:boolean = false;
   registerForm = new FormGroup({
     nume: new FormControl('', [Validators.required, Validators.minLength(4)]),
     prenume: new FormControl('', [Validators.required, Validators.minLength(4)]),
     email: new FormControl('', [Validators.required, Validators.minLength(4)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    userType:new FormControl('1'),
+    materie:new FormControl('')
 
   });
   constructor(private authService:AuthService) { }
@@ -24,5 +26,9 @@ export class RegisterComponent implements OnInit {
   Register(data:any){
     console.log(data);
     this.authService.Register(data);
+  }
+  
+  changeUserType(event:any){
+    this.isProfesorSelected = !this.isProfesorSelected;
   }
 }

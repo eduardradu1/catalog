@@ -6,12 +6,18 @@
             <!-- Sign In Form -->
             <form [formGroup]="gradesForm" (ngSubmit)="Save(gradesForm.value)">
               <div class="form-floating mb-3">
-                <input type="number" formControlName="nota1" class="form-control" id="floatingInput" placeholder="nota 1"  >
+                <input type="number" name="quantity" min="1" max="10" formControlName="nota1" class="form-control" id="floatingInput" placeholder="nota 1"  [ngClass]="{'is-invalid': submitted &&  nota1.errors }">
                 <label for="floatingInput">Nota 1</label>
               </div>
+              <div *ngIf="nota1.value > 10 || nota1.value < 0 || submitted">
+                <p *ngIf="nota1.errors?.required" class="text-danger mt-1">Camp gol</p>
+              </div>
               <div class="form-floating mb-3">
-                <input type="number"  formControlName="nota2" class="form-control" id="floatingPassword" placeholder="nota 2">
+                <input type="number" name="quantity" min="1" max="10" formControlName="nota2" class="form-control" id="floatingPassword" placeholder="nota 2" [ngClass]="{'is-invalid': submitted && nota2.errors }">
                 <label for="floatingPassword">Nota 2</label>
+              </div>
+              <div *ngIf="nota2.value > 10 || nota2.value < 0 ||  submitted">
+                <p *ngIf="nota2.errors?.required" class="text-danger mt-1">Camp gol</p>
               </div>
               <div class="d-grid">
                 <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" style="font-size: 0.8rem;" type="submit">Adauga note</button>

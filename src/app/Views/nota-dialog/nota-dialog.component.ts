@@ -17,14 +17,23 @@ export class NotaDialogComponent implements OnInit {
   });
   constructor( private dialogRef: MatDialogRef<NotaDialogComponent>, private studentService: StudentService,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any) { }
-
+    submitted = false;
   ngOnInit(): void {
   }
   close() {
     this.dialogRef.close();
   }
+  get nota1() : any{
+    return this.gradesForm.get('nota1');
+  }
+  get nota2() : any{
+    return this.gradesForm.get('nota2');
+  }
   Save(data:any){
     console.log(data);
+    if(this.gradesForm.errors?.lenght > 0){
+      console.log("ERROROOROR")
+    }
     if(this.gradesForm.dirty){
       var grade = {
         Nota1:data.nota1,
