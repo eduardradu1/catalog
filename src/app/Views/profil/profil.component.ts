@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import * as moment from 'moment';
 import { StudentGrade } from 'src/app/Core/Models/student-grade.model';
 import { User } from 'src/app/Core/Models/user.model';
-import { StateService } from 'src/app/Core/state.service';
 import { StudentService } from 'src/app/Core/student.service';
 import { NotaDialogComponent } from '../nota-dialog/nota-dialog.component';
 
@@ -35,18 +35,41 @@ export class ProfilComponent implements OnInit {
           this.studentGrades = s;
         });
       }else{
-      this.studentService.GetAllStudents()
-      .subscribe(s => {
-        this.studentList = s.filter(s => s.isStudent == true);
-        this.studentService.getAllStudentGrades(this.studentList.map(s => s.uid ?? "", this.currentUser?.materie))
-        .subscribe(e => {
-          console.log(e);
-        })
-      });
+        this.getStudentsGrades();
       }
-
     });
 
+  }
+
+  getStudentsGrades(){
+    this.studentService.GetAllStudents()
+    .subscribe(s => {
+      this.studentList = s.filter(s => s.isStudent == true);
+      let materie =this.currentUser?.materie ?? ""; 
+      this.studentService.getAllStudentGrades(this.studentList.map(s => s.uid ?? ""), materie)
+      .subscribe(listaNote => {
+       this.studentList =  this.studentList.map(s => {
+          let nota1 = listaNote.filter(n => n.StudentId == s.uid && n.TipNota == "Nota1")
+          .sort((a,b) => { 
+            let createdA  = moment(a.CreateDate);
+            let createdB =  moment(b.CreateDate);
+            return createdA.diff(createdB);
+          })
+          .slice(-1);
+          let nota2 = listaNote.filter(n => n.StudentId == s.uid && n.TipNota == "Nota2")
+          .sort((a,b) => { 
+            let createdA  = moment(a.CreateDate);
+            let createdB =  moment(b.CreateDate);
+            return createdA.diff(createdB);
+          })
+          .slice(-1);
+          var temp = Object.assign({}, s);
+          temp.nota1 = nota1[0]?.Nota?.toString();
+          temp.nota2 = nota2[0]?.Nota?.toString();
+          return temp;
+        });
+      })
+    });
   }
 
   OpenModal(uid?:string){
@@ -59,6 +82,7 @@ export class ProfilComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       data => {
        dialogRef.close();
+       this.getStudentsGrades();
       });
   }
 }

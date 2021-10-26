@@ -6,6 +6,7 @@ export interface User {
     photoURL?: string | null;
     emailVerified?: boolean | null;
     isStudent?:boolean;
-    materie?:string | null;
-    
+    materie?:string;
+    nota1?:string;
+    nota2?:string;
  }

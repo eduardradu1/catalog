@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class StateService {
-    private loginSubject = new BehaviorSubject({});
+    private loginSubject = new BehaviorSubject(false);
     loginSubjectMessage = this.loginSubject.asObservable();
 
     constructor() { }

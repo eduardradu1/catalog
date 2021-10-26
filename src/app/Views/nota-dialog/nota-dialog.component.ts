@@ -34,8 +34,12 @@ export class NotaDialogComponent implements OnInit {
         Profesor:this.data.user.nume,
         CreateDate: moment()
       };
-      this.studentService.SaveStudentGrades(grade);
-      this.close();
+      this.studentService.SaveStudentGrades(grade)
+      .then(e => {
+        if(e == true){
+          this.close();
+        }
+      });
     }
    
 

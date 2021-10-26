@@ -1,8 +1,12 @@
 export interface StudentGrade {
     materie?: string;
     medie?:number;
-    note:Nota[];
+    nota1?:number;
+    nota2?:number;
     semestru?:string;
+    dataNota1?:any;
+    dataNota2?:any;
+    profesor?:string;
 }
 
 export interface Nota{
@@ -17,6 +21,6 @@ export interface Grade {
     Materie?:string;
     Profesor?:string;
     Nota?:number;
-    CreateDate?:string;
+    CreateDate:any;
     TipNota?:string;
 }

@@ -26,20 +26,26 @@ import { User } from "./Models/user.model";
         .append('Access-Control-Allow-Methods', 'OPTIONS')
         .append('Access-Control-Allow-Origin', '*');
         console.log(JSON.stringify(grade));
-        return this.httpClient.post(this.apiURL + '/grades', grade,{headers})
-        .pipe(
-          retry(1),
-          catchError(this.handleError)
-        )
+        return new Promise((resolve, reject) => {
+           this.httpClient.post(this.apiURL + '/grades', grade,{headers})
+           .toPromise().then(e => {
+            resolve(true);
+           })
+           .catch(error => {
+            console.log(error);
+            reject(false);
+          })
+        });
       }
   
-    getAllStudentGrades(userList:string[], materie?:string):Observable<Grade[]> {
+    getAllStudentGrades(userList:string[], materie:string):Observable<Grade[]> {
         const headers = new HttpHeaders()
         .append('Content-Type', 'application/json')
         .append('Access-Control-Allow-Headers', 'Content-Type')
         .append('Access-Control-Allow-Methods', 'OPTIONS')
         .append('Access-Control-Allow-Origin', '*');
-        console.log(userList);
+        console.log(JSON.stringify({materie:materie,userList: userList}));
+        
 
         return this.httpClient.post<Grade[]>(this.apiURL + '/grades-list', {materie:materie,userList: userList},{headers})
         .pipe(
@@ -65,6 +71,7 @@ import { User } from "./Models/user.model";
             })
         }))
       }
+
     getStudentGrades(uid:string):Observable<StudentGrade[]>{
         const headers = new HttpHeaders()
         .append('Content-Type', 'application/json')

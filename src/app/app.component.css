@@ -45,6 +45,7 @@
     text-decoration: none;
     padding: 0 16px;
     text-transform: uppercase;
+    cursor: pointer;
   }
   
   nav ul li a:hover {

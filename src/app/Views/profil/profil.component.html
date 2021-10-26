@@ -71,6 +71,7 @@
             <thead>
               <tr>
                 <th scope="col">Disciplina</th>
+                <th scope="col">Profesor</th>
                 <th scope="col">Semestru</th>
                 <th scope="col">Nota 1</th>
                 <th scope="col">Nota 2</th>
@@ -80,9 +81,10 @@
             <tbody >
               <tr *ngFor="let grade of studentGrades; let i = index;">
                 <td>{{ grade.materie }}</td>
+                <td>{{ grade.profesor }}</td>
                 <td>{{ grade.semestru}}</td>
-                <td>{{ grade.note[0]?.Nota }}</td>
-                <td>{{ grade.note[1]?.Nota }}</td>
+                <td>{{ grade.nota1 }}</td>
+                <td>{{ grade.nota2 }}</td>
                 <td class="badge bg-info text-dark" style="color: white !important;">{{ grade.medie}}</td>
               </tr>
             </tbody>
@@ -98,9 +100,9 @@
               </thead>
               <tbody>
                 <tr *ngFor="let student of studentList; let i = index;">
-                  <td>{{student.nume}} {{student.prenume}}</td>
-                  <td></td>
-                  <td ></td>
+                  <td>{{ student.nume }} {{student.prenume}}</td>
+                  <td>{{ student.nota1 }}</td>
+                  <td>{{ student.nota2 }}</td>
                   <td>
                       <button type="button" (click)="OpenModal(student.uid)" class="btn btn-success">  
                           Noteaza

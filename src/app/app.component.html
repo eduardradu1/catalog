@@ -11,26 +11,26 @@
     </ul>
   </div>
 </nav>-->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <div class="container-fluid">
-      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="background-color: red;">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".test" aria-controls="test" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2 test">
           <ul class="navbar-nav me-auto">
-            <li><a [routerLink]="['/home']" >Acasa</a></li>
-            <li><a *ngIf="hideLogOut && isStudent"   [routerLink]="['/profil']">Date Student</a></li>
-            <li><a *ngIf="hideLogOut && !isStudent"   [routerLink]="['/studenti']">Studenti</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/home']" >Acasa</a></li>
+            <li class="nav-item"><a class="nav-link" *ngIf="hideLogOut" [routerLink]="['/profil']">Profil</a></li>
           </ul>
       </div>
       <div class="mx-auto order-0">
-          <a class="navbar-brand mx-auto" href="#"><img src="../../../assets/images/Logo_Dedeman.png"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".dual-collapse2">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+          <a class="navbar-brand mx-auto" [routerLink]="['/home']" ><img src="../../../assets/images/Logo_Dedeman.png"></a>
+         
       </div>
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 test">
           <ul class="navbar-nav ms-auto">
-            <li><a *ngIf="hideLogOut != true" [routerLink]="['/register']" href=#>Inregistrare</a></li>
-            <li><a *ngIf="hideLogOut != true" [routerLink]="['/log-in']" href=#>Log in</a></li>
-            <li><a *ngIf="hideLogOut" href=# (click)="logOut()">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" *ngIf="hideLogOut != true" [routerLink]="['/register']">Inregistrare</a></li>
+            <li class="nav-item"><a class="nav-link" *ngIf="hideLogOut != true" [routerLink]="['/log-in']">Log in</a></li>
+            <li class="nav-item"><a class="nav-link" *ngIf="hideLogOut" (click)="logOut()">Logout</a></li>
           </ul>
       </div>
   </div>
