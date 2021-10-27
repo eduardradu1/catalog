@@ -1,54 +1,50 @@
-
-  
-  nav {
-    width: 100%;
-    height: 60px;
-    background-color: #111111;
-    margin: 0 auto;
-  }
   .wrapper{
     width: 100%;
     margin: 0 auto;
-    background-image:     linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.6)
-    ), url(https://wallpaperaccess.com/full/1209471.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    overflow: hidden;  
-    height: 100vh;
   }
-
-  nav .nav-bar-wrapper {
+#navbar{
+  padding: 5px 5px;
+}
+  div .nav-bar-wrapper {
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   
-  nav img {
+  div img {
     width: 100px;
   }
   
-  nav ul li {
+  div ul li {
     list-style: none;
     float: left;
+    text-align: center;
   }
   
-  nav ul li a {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    font-size: 14px;
+  div ul li a {
+    font: 600 16px/0.85 'Pacifico', Helvetica, sans-serif;
     color: #ffffff;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
     text-decoration: none;
-    padding: 0 16px;
+    padding: 17px 12px;
     text-transform: uppercase;
     cursor: pointer;
   }
+
+  div a{
+    font: 550 48px/0.85 'Pacifico', Helvetica, sans-serif;
+    color: #ffffff;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+    text-decoration: none;
+    padding: 17px 12px;
+    cursor: pointer;
+  }
   
-  nav ul li a:hover {
+  div ul li a:hover {
+    color: #31a6ff;
+  }
+  div ul li a button span:hover {
     color: #31a6ff;
   }
   
@@ -87,6 +83,25 @@
     background-color:#31a6ff;
   }
   
+.navbar-collapse{
+  padding:5px;
+}
+
+.mx-auto{
+  padding:10px;
+}
+
+@media (max-width: 414px){
+  .navbar-brand{
+    padding:0 !important;
+  }
+  .order-0{
+    margin-top:20px;
+    padding:0 !important;
+  }
+
+}
+
   /* sign up */
   
   .signup-form-form {
@@ -118,7 +133,7 @@
   }
 
   @media (min-width: 768px) {
-    .navbar-brand.abs
+    .divbar-brand.abs
         {
             position: absolute;
             width: auto;
@@ -127,3 +142,87 @@
             text-align: center;
         }
     }
+
+    .pushable {
+      position: relative;
+      border: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      outline-offset: 4px;
+      transition: filter 250ms;
+    }
+    .shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: hsl(0deg 0% 0% / 0.25);
+      will-change: transform;
+      transform: translateY(2px);
+      transition:
+        transform
+        600ms
+        cubic-bezier(.3, .7, .4, 1);
+    }
+    .edge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(
+        to left,
+        hsl(210deg 100% 16%) 0%,
+        hsl(210deg, 100%, 29%) 8%,
+        hsl(210deg, 100%, 29%) 92%,
+        hsl(210deg 100% 16%) 100%
+      );
+    }
+    .front {
+      display: block;
+      position: relative;
+      padding: 12px 42px;
+      border-radius: 12px;
+      font-size: 1.25rem;
+      color: white;
+      background: hsl(345deg 100% 47%);
+      will-change: transform;
+      transform: translateY(-4px);
+      transition:
+        transform
+        600ms
+        cubic-bezier(.3, .7, .4, 1);
+    }
+    .pushable:hover {
+      filter: brightness(110%);
+    }
+    .pushable:hover .front {
+      transform: translateY(-6px);
+      transition:
+        transform
+        250ms
+        cubic-bezier(.3, .7, .4, 1.5);
+    }
+    .pushable:active .front {
+      transform: translateY(-2px);
+      transition: transform 34ms;
+    }
+    .pushable:hover .shadow {
+      transform: translateY(4px);
+      transition:
+        transform
+        250ms
+        cubic-bezier(.3, .7, .4, 1.5);
+    }
+    .pushable:active .shadow {
+      transform: translateY(1px);
+      transition: transform 34ms;
+    }
+    .pushable:focus:not(:focus-visible) {
+      outline: none;
+    }
+

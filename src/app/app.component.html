@@ -1,40 +1,57 @@
-<!--<nav>
-  <div class="nav-bar-wrapper">
-    <a href="index.php"><img src="../../../assets/images/Logo_Dedeman.png" alt="Dedeman logo"></a>
-    <ul>
-          <li><a [routerLink]="['/home']" >Acasa</a></li>
-          <li><a *ngIf="hideLogOut"  [routerLink]="['/studenti']">Studenti</a></li>
-          <li><a *ngIf="hideLogOut"   [routerLink]="['/profil']">Profil</a></li>
-          <li><a *ngIf="hideLogOut" href=# (click)="logOut()">Logout</a></li>
-          <li><a *ngIf="hideLogOut != true" [routerLink]="['/register']" href=#>Inregistrare</a></li>
-          <li><a *ngIf="hideLogOut != true" [routerLink]="['/log-in']" href=#>Log in</a></li>
-    </ul>
-  </div>
-</nav>-->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="background-color: red;">
-  <div class="container">
+<div class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container" id="navbar">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".test" aria-controls="test" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-  </button>
+    </button>
+    <div class="mx-auto order-0">
+      <a class="navbar-brand mx-auto" [routerLink]="['/home']">Catalog Online</a>
+    </div>
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2 test">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/home']" >Acasa</a></li>
-            <li class="nav-item"><a class="nav-link" *ngIf="hideLogOut" [routerLink]="['/profil']">Profil</a></li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="hideLogOut" [routerLink]="['/profil']">
+                <button class="pushable">
+                  <span class="shadow"></span>
+                  <span class="edge"></span>
+                  <span class="front bg-dark">Profil</span>
+                </button>
+              </a>
+            </li>
           </ul>
-      </div>
-      <div class="mx-auto order-0">
-          <a class="navbar-brand mx-auto" [routerLink]="['/home']" ><img src="../../../assets/images/Logo_Dedeman.png"></a>
-         
       </div>
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 test">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" *ngIf="hideLogOut != true" [routerLink]="['/register']">Inregistrare</a></li>
-            <li class="nav-item"><a class="nav-link" *ngIf="hideLogOut != true" [routerLink]="['/log-in']">Log in</a></li>
-            <li class="nav-item"><a class="nav-link" *ngIf="hideLogOut" (click)="logOut()">Logout</a></li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="hideLogOut != true" [routerLink]="['/register']">
+                <button class="pushable">
+                  <span class="shadow"></span>
+                  <span class="edge"></span>
+                  <span class="front bg-dark">Inregistrare</span>
+                </button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="hideLogOut != true" [routerLink]="['/log-in']">
+                <button class="pushable">
+                  <span class="shadow"></span>
+                  <span class="edge"></span>
+                  <span class="front bg-dark">Log in</span>
+                </button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="hideLogOut" (click)="logOut()">
+                <button class="pushable">
+                  <span class="shadow"></span>
+                  <span class="edge"></span>
+                  <span class="front bg-dark">Logout</span>
+                </button>
+              </a>
+            </li>
           </ul>
       </div>
   </div>
-</nav>
+</div>
 <div class="wrapper">
   <router-outlet></router-outlet>
 </div>

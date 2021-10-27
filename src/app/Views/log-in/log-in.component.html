@@ -2,10 +2,8 @@
         <div class="login d-flex align-items-center py-5">
           <div class="container">
             <div class="row">
-              <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">Bine ai venit!</h3>
-  
-                <!-- Sign In Form -->
+              <div class="col-md-9 col-lg-5 col-xl-4 mx-auto">
+               <!-- Sign In Form -->
                 <form [formGroup]="loginForm" (ngSubmit)="SignIn(loginForm.value)">
                   <div class="form-floating mb-3">
                     <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com" >
