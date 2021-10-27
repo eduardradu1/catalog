@@ -23,7 +23,7 @@
   }
   
   div ul li a {
-    font: 600 16px/0.85 'Pacifico', Helvetica, sans-serif;
+    font: 600 16px/0.85 'Zen Antique', 'Pacifico', Helvetica, sans-serif;
     color: #ffffff;
     text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
     text-decoration: none;
@@ -33,7 +33,7 @@
   }
 
   div a{
-    font: 550 48px/0.85 'Pacifico', Helvetica, sans-serif;
+    font: 550 45px/0.85 'Zen Antique', 'Pacifico', Helvetica, sans-serif;
     color: #ffffff;
     text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
     text-decoration: none;
@@ -87,19 +87,10 @@
   padding:5px;
 }
 
-.mx-auto{
-  padding:10px;
-}
-
 @media (max-width: 414px){
   .navbar-brand{
     padding:0 !important;
   }
-  .order-0{
-    margin-top:20px;
-    padding:0 !important;
-  }
-
 }
 
   /* sign up */
