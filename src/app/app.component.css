@@ -5,6 +5,10 @@
 #navbar{
   padding: 5px 5px;
 }
+
+.navbar {
+  background: rgb(33,37,41, 0.39)!important;
+}
   div .nav-bar-wrapper {
     height: 100%;
     display: flex;
