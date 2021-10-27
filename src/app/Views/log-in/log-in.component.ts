@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/Core/auth/auth.service';
 })
 export class LogInComponent implements OnInit {
   loginForm = new FormGroup({
-    email: new FormControl('test@gmail.com', [Validators.required, Validators.minLength(4)]),
-    password: new FormControl('Password', [Validators.required, Validators.minLength(6)]),
+    email: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   constructor(private authService:AuthService) { }
